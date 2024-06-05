@@ -3,6 +3,7 @@ package com.lab.vo.controller;
 import com.lab.vo.data.vo.PersonVO;
 import com.lab.vo.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,7 @@ public class PersonController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public PersonVO create(@RequestBody PersonVO person) {
         return service.create(person);
     }
@@ -36,6 +38,7 @@ public class PersonController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<?> delete(@PathVariable("id") UUID id) {
         service.delete(id);
         return ResponseEntity.ok().build();
