@@ -2,7 +2,9 @@ package com.lab.vo.services;
 
 import com.lab.vo.converter.DozerConverter;
 import com.lab.vo.data.model.Person;
-import com.lab.vo.data.vo.PersonVO;
+import com.lab.vo.data.vo.v1.PersonVO;
+import com.lab.vo.data.vo.v2.PersonVOV2;
+import com.lab.vo.mapper.custom.PersonMapper;
 import com.lab.vo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -16,6 +18,8 @@ public class PersonServices {
 
     @Autowired
     PersonRepository personRepository;
+    @Autowired
+    PersonMapper personMapper;
 
     public PersonVO create(PersonVO person) {
         var entity = DozerConverter.parseObject(person, Person.class);
@@ -51,5 +55,11 @@ public class PersonServices {
         Person entity = personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
         personRepository.delete(entity);
+    }
+
+    public PersonVOV2 createV2(PersonVOV2 person) {
+        var entity = personMapper.converVoTotEntity(person);
+        var vo = personMapper.convertEntityToVo(personRepository.save(entity));
+        return vo;
     }
 }

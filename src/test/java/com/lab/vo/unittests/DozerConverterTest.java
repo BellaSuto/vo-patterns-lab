@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import com.lab.vo.converter.DozerConverter;
 import com.lab.vo.data.model.Person;
-import com.lab.vo.data.vo.PersonVO;
+import com.lab.vo.data.vo.v1.PersonVO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,12 +1,5 @@
-package com.lab.vo.data.vo;
+package com.lab.vo.data.vo.v1;
 
-import com.lab.vo.data.model.Person;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.Objects;
 import java.util.UUID;
 
 public class PersonVO {

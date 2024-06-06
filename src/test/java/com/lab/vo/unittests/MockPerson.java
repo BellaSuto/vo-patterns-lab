@@ -2,7 +2,7 @@ package com.lab.vo.unittests;
 
 
 import com.lab.vo.data.model.Person;
-import com.lab.vo.data.vo.PersonVO;
+import com.lab.vo.data.vo.v1.PersonVO;
 
 import java.util.ArrayList;
 import java.util.List;

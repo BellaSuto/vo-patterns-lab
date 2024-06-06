@@ -1,6 +1,7 @@
 package com.lab.vo.controller;
 
-import com.lab.vo.data.vo.PersonVO;
+import com.lab.vo.data.vo.v1.PersonVO;
+import com.lab.vo.data.vo.v2.PersonVOV2;
 import com.lab.vo.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,11 @@ public class PersonController {
     @ResponseStatus(HttpStatus.CREATED)
     public PersonVO create(@RequestBody PersonVO person) {
         return service.create(person);
+    }
+    @PostMapping(value = "/v2")
+    @ResponseStatus(HttpStatus.CREATED)
+    public PersonVOV2 createV2(@RequestBody PersonVOV2 person) {
+        return service.createV2(person);
     }
 
     @PutMapping
