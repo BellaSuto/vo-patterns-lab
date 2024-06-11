@@ -1,9 +1,16 @@
 package com.lab.vo.data.vo.v1;
 
-import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.github.dozermapper.core.Mapping;
+import org.springframework.hateoas.RepresentationModel;
 
-public class PersonVO {
-    private UUID id;
+import java.util.UUID;
+@JsonPropertyOrder({"id", "firstName", "lastName", "address", "gender"})
+public class PersonVO extends RepresentationModel<PersonVO> {
+    @JsonProperty("id")
+    @Mapping("id")
+    private UUID key;
 
     private String firstName;
 
@@ -16,12 +23,12 @@ public class PersonVO {
     public PersonVO() {
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getKey() {
+        return key;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setKey(UUID key) {
+        this.key = key;
     }
 
     public String getFirstName() {
@@ -60,10 +67,11 @@ public class PersonVO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         PersonVO personVO = (PersonVO) o;
 
-        if (!id.equals(personVO.id)) return false;
+        if (!key.equals(personVO.key)) return false;
         if (!firstName.equals(personVO.firstName)) return false;
         if (!lastName.equals(personVO.lastName)) return false;
         if (!address.equals(personVO.address)) return false;
@@ -72,7 +80,8 @@ public class PersonVO {
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
+        int result = super.hashCode();
+        result = 31 * result + key.hashCode();
         result = 31 * result + firstName.hashCode();
         result = 31 * result + lastName.hashCode();
         result = 31 * result + address.hashCode();
