@@ -13,7 +13,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Restful API with Java 18 and Spring Boot 3")
+                        .title("Restful API with Java 17 and Spring Boot 3")
                         .version("v1")
                         .description("API for design pattern VO lab")
                         .termsOfService("https://github.com/BellaSuto/vo-patterns-lab")
